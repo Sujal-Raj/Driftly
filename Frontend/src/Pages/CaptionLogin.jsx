@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import LogoNavbar from "../Components/LogoNavbar";
 import { Link } from "react-router-dom";
 
-function UserLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(email, password);
-  };
+function CaptionLogin() {
+  const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log(email, password);
+    };
   return (
     <>
-      <main className="h-screen w-full pt-10 flex flex-col items-center">
+    <main className="h-screen w-full pt-10 flex flex-col items-center">
         <LogoNavbar />
         <section className="w-full px-4">
           <form
@@ -22,7 +23,7 @@ function UserLogin() {
           >
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">
               <label className="text-2xl font-semibold" htmlFor="email">
-                What's Your Email:
+                Caption's Email:
               </label>
               <input
                 type="email"
@@ -59,12 +60,12 @@ function UserLogin() {
             </div>
           </form>
         </section>
-        <p className="text-center text-xl text-gray-500">
+        {/* <p className="text-center text-xl text-gray-500">
           Don't have an account?
           <Link to={"/user-signup"}>
             <span className="text-emerald-400 underline">Sign Up</span>
           </Link>
-        </p>
+        </p> */}
         <div className="w-full px-8 absolute bottom-10">
         <Link to={"/caption-signup"}>
           <button className="bg-emerald-400 w-full font-semibold text-white rounded-lg py-2 text-2xl flex items-center justify-center gap-1 md:w-fit md:mx-auto md:px-5  cursor-pointer hover:bg-emerald-500 transform transition-all ease-linear">
@@ -74,7 +75,7 @@ function UserLogin() {
         </div>
       </main>
     </>
-  );
+  )
 }
 
-export default UserLogin;
+export default CaptionLogin
