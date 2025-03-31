@@ -1,15 +1,37 @@
 import React, { useState } from 'react'
-import LogoNavbar from '../Components/LogoNavbar';
-import { Link } from 'react-router-dom';
+import LogoNavbar from '../../Components/LogoNavbar';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+
 
 function UserSignUp() {
+  const API_URL =
+  import.meta.env.VITE_NODE_ENV === "production"
+    ? `${import.meta.env.VITE_PRODUCTION_URL}/api`
+    : `${import.meta.env.VITE_DEVELOPMENT_URL}/api`;
+
     const [fullname, setFullname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
+    const notify = () => toast("Wow so easy!");
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
         console.log(fullname,password,email);
+        try {
+          const response = await axios.post(`${API_URL}/users/adduser`,{
+            name: fullname, password, email
+          });
+          toast.success("User registered successfully!");
+          navigate("/user-login");
+          
+        } catch (error) {
+          console.log(error.message);
+          toast.error("Registration failed: " + error.message);
+        }
+
     }
   return (
     <>
@@ -70,6 +92,7 @@ function UserSignUp() {
               />
             </div>
           </form>
+          <ToastContainer />
         </section>
         <p className="text-center text-xl text-gray-500">
           Already have an account? 

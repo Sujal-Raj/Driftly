@@ -1,14 +1,36 @@
 import React, { useState } from "react";
-import LogoNavbar from "../Components/LogoNavbar";
+import LogoNavbar from "../../Components/LogoNavbar";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import axios from "axios";
+
 
 function UserLogin() {
+  const API_URL =
+  import.meta.env.VITE_NODE_ENV === "production"
+    ? `${import.meta.env.VITE_PRODUCTION_URL}/api`
+    : `${import.meta.env.VITE_DEVELOPMENT_URL}/api`;
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, password);
+    try {
+      const response = await axios.post(`${API_URL}/users/loginuser`,{
+        email,
+        password,
+      })
+      // console.log(response);
+      toast.success("Login successful");
+
+      
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Invalid email or password");
+    }
   };
   return (
     <>
@@ -58,6 +80,7 @@ function UserLogin() {
               />
             </div>
           </form>
+          <ToastContainer />
         </section>
         <p className="text-center text-xl text-gray-500">
           Don't have an account?

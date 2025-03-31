@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {addUser,loginUser,getUserProfile} = require("../Controllers/userControllers");
 const userAuth = require('../middlewares/userAuth');
+
 // Register user
 router.post("/adduser",addUser);
 
