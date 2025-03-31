@@ -33,7 +33,7 @@ function CaptionLogin() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">
@@ -48,7 +48,7 @@ function CaptionLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">

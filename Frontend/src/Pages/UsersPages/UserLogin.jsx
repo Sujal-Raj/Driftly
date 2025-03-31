@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LogoNavbar from "../../Components/LogoNavbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 
@@ -14,10 +14,11 @@ function UserLogin() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    // console.log(email, password);
     try {
       const response = await axios.post(`${API_URL}/users/loginuser`,{
         email,
@@ -25,6 +26,7 @@ function UserLogin() {
       })
       // console.log(response);
       toast.success("Login successful");
+      navigate("/user-home");
 
       
     } catch (error) {
@@ -54,7 +56,7 @@ function UserLogin() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">
@@ -69,7 +71,7 @@ function UserLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">

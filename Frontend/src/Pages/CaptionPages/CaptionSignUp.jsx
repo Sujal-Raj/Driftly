@@ -31,7 +31,7 @@ function CaptionSignUp() {
                 required
                 value={fullname}
                 onChange={(e)=>setFullname(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">
@@ -46,7 +46,7 @@ function CaptionSignUp() {
                 required
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <div className="flex flex-col px-2 sm:px-6 gap-2 mb-4">
@@ -61,7 +61,7 @@ function CaptionSignUp() {
                 required
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)} 
-                className="bg-gray-300 rounded-lg p-2 text-lg"
+                className="bg-gray-200 rounded-lg p-2 text-lg"
               />
             </div>
             <p className='text-center text-xl underline mb-2'>Vehicle Details</p>
@@ -77,7 +77,7 @@ function CaptionSignUp() {
                 required
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)} 
-                className="bg-gray-300 rounded-lg p-2 text-lg w-full"
+                className="bg-gray-200 rounded-lg p-2 text-lg w-full"
               />
             </div>
             <div className="flex items-center px-2 sm:px-6 gap-2 mb-4">
@@ -92,7 +92,7 @@ function CaptionSignUp() {
                 required
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)} 
-                className="bg-gray-300 rounded-lg p-2 text-lg w-full"
+                className="bg-gray-200 rounded-lg p-2 text-lg w-full"
               />
             </div>
             <div className="flex items-center px-2 sm:px-6 gap-2 mb-4">
@@ -107,7 +107,7 @@ function CaptionSignUp() {
                 required
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)} 
-                className="bg-gray-300 rounded-lg p-2 text-lg w-full"
+                className="bg-gray-200 rounded-lg p-2 text-lg w-full"
               />
             </div>
             <div className="flex items-center px-2 sm:px-6 gap-2 mb-4">
@@ -122,9 +122,9 @@ function CaptionSignUp() {
                 required
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)} 
-                className="bg-gray-300 rounded-lg p-2 text-lg w-full"
+                className="bg-gray-200 rounded-lg p-2 text-lg w-full"
               /> */}
-              <select className="bg-gray-300 rounded-lg p-2 text-lg w-full">
+              <select className="bg-gray-200 rounded-lg p-2 text-lg w-full">
                 <option value="car">Car</option>
                 <option value="bike" selected>Bike</option>
                 <option value="auto">Auto</option>
