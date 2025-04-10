@@ -5,6 +5,8 @@ import { useGSAP } from "@gsap/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoPersonSharp } from "react-icons/io5";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { FaRupeeSign } from "react-icons/fa";
 
 function UserHome() {
   const locations = [
@@ -16,6 +18,8 @@ function UserHome() {
   const [destination, setDestination] = useState("");
   const [locationDivView, setLocationDivView] = useState(false);
   const [vechilePanel, setVechilePanel] = useState(false);
+  const [confirmTripPanel, setConfirmTripPanel] = useState(false);
+  const [tripPanel, setTripPanel] = useState(false);
 
   useGSAP(() => {
     if (locationDivView) {
@@ -146,13 +150,16 @@ function UserHome() {
                 onClick={() => {
                   setVechilePanel(false);
                 }}
-                className="text-2xl w-20 mx-auto"
+                className="text-2xl w-20 mx-auto cursor-pointer"
               />
             ) : null}
             <h1 className="text-4xl font-semibold px-5 mt-2 mb-2">
               Choose a Vechile
             </h1>
-            <div className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
+            <div onClick={()=>{
+              setConfirmTripPanel(true);
+              setVechilePanel(false);
+            }} className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
               <img
                 src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1548646935/assets/64/93c255-87c8-4e2e-9429-cf709bf1b838/original/3.png"
                 alt=""
@@ -171,7 +178,10 @@ function UserHome() {
                 <h2 className="text-lg font-semibold">₹154.20</h2>
               </div>
             </div>
-            <div className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
+            <div onClick={()=>{
+              setConfirmTripPanel(true);
+              setVechilePanel(false);
+            }} className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
               <img
                 src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1649231091/assets/2c/7fa194-c954-49b2-9c6d-a3b8601370f5/original/Uber_Moto_Orange_312x208_pixels_Mobile.png"
                 alt=""
@@ -190,7 +200,10 @@ function UserHome() {
                 <h2 className="text-lg font-semibold">₹60.28</h2>
               </div>
             </div>
-            <div className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
+            <div onClick={()=>{
+              setConfirmTripPanel(true);
+              setVechilePanel(false);
+            }} className="flex item-center justify-around border-2 rounded-lg mb-2 cursor-pointer">
               <img
                 src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1648431773/assets/1d/db8c56-0204-4ce4-81ce-56a11a07fe98/original/Uber_Auto_558x372_pixels_Desktop.png"
                 alt=""
@@ -209,6 +222,74 @@ function UserHome() {
                 <h2 className="text-lg font-semibold">₹90.28</h2>
               </div>
             </div>
+          </div>
+        </section>
+
+        // Confirm trip panel
+        <section className={`confirm-trip-panel
+           fixed min-h-[25vh] 
+           z-15 w-full bg-white rounded-t-xl transition-all duration-300 ease-in-out ${confirmTripPanel ? "bottom-0" : "-bottom-full"} flex flex-col justify-center items-center gap-4`}>
+            {confirmTripPanel ? (
+              <IoIosArrowDown
+                onClick={() => {
+                  setTripPanel(false);
+                }}
+                className="text-2xl w-20 mx-auto cursor-pointer"
+              />
+            ) : null}
+          <h1 className="text-2xl font-semibold  ">Confirm your Ride</h1>
+          <img src="https://play-lh.googleusercontent.com/GEibSBKz03o6Cc8hzKdO4L7BYTeR6YoHBNHAkgpl6VTvOiLdQjKTOcKiXhLRrpi6Fo0" alt="" className="h-[150px] "/>
+          <div className="flex flex-col gap-1 px-5">
+            <div className="flex items-center gap-2 border-2 rounded-lg mb-2 cursor-pointer mx-1 px-2">
+            <IoLocationSharp className="text-4xl"/>
+            <p>Johnathan Doe, 4567 Maple Avenue, Suite 890, Downtown District, Springfield, IL 62704, USA</p>
+            </div>
+            <div className="flex items-center gap-2 border-2 rounded-lg mb-2 cursor-pointer mx-1 px-2">
+            <FaExternalLinkSquareAlt className="text-4xl"/>
+            <p>Johnathan Doe, 4567 Maple Avenue, Suite 890, Downtown District, Springfield, IL 62704, USA</p>
+            </div>
+            <div className="flex items-center gap-2 mb-2 cursor-pointer mx-1 px-2">
+            <FaRupeeSign className="text-2xl"/>
+            <p className="text-2xl">156.23</p>
+            </div>
+            <button onClick={()=>{
+              setConfirmTripPanel(false);
+              setTripPanel(true);
+            }} className="bg-emerald-500 text-white rounded-lg px-5 py-2 mt-2 mb-4">Confirm</button>
+            
+          </div>
+        </section>
+
+
+
+        // Looking drivers panel
+        <section className={`trip-panel
+           fixed min-h-[25vh] 
+           z-15 w-full bg-white rounded-t-xl transition-all duration-300 ease-in-out ${tripPanel ? "bottom-0" : "-bottom-full"} flex flex-col justify-center items-center gap-4`}>
+            {tripPanel ? (
+              <IoIosArrowDown
+                onClick={() => {
+                  setTripPanel(false);
+                }}
+                className="text-2xl w-20 mx-auto cursor-pointer"
+              />
+            ) : null}
+          <h1 className="text-2xl font-semibold  ">Looking for nearby drivers </h1>
+          <img src="https://play-lh.googleusercontent.com/GEibSBKz03o6Cc8hzKdO4L7BYTeR6YoHBNHAkgpl6VTvOiLdQjKTOcKiXhLRrpi6Fo0" alt="" className="h-[150px] "/>
+          <div className="flex flex-col gap-1 px-5">
+            <div className="flex items-center gap-2 border-2 rounded-lg mb-2 cursor-pointer mx-1 px-2">
+            <IoLocationSharp className="text-4xl"/>
+            <p>Johnathan Doe, 4567 Maple Avenue, Suite 890, Downtown District, Springfield, IL 62704, USA</p>
+            </div>
+            <div className="flex items-center gap-2 border-2 rounded-lg mb-2 cursor-pointer mx-1 px-2">
+            <FaExternalLinkSquareAlt className="text-4xl"/>
+            <p>Johnathan Doe, 4567 Maple Avenue, Suite 890, Downtown District, Springfield, IL 62704, USA</p>
+            </div>
+            <div className="flex items-center gap-2 mb-2 cursor-pointer mx-1 px-2">
+            <FaRupeeSign className="text-2xl"/>
+            <p className="text-2xl">156.23</p>
+            </div>
+            
           </div>
         </section>
       </main>
